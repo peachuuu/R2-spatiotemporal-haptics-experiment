@@ -1,0 +1,801 @@
+/* Experiment workflow system — plain accessible stylesheet.
+   State is never communicated by colour alone: every badge, error, and
+   mock indicator carries visible text. */
+
+:root {
+  --color-bg: #f5f6f8;
+  --color-surface: #ffffff;
+  --color-border: #d4d8de;
+  --color-text: #1c2330;
+  --color-text-muted: #5a6474;
+  --color-primary: #1f5f8b;
+  --color-primary-hover: #174a6d;
+  --color-danger: #8b2f2f;
+  --color-danger-hover: #6f2424;
+  --color-warn-bg: #fff7e0;
+  --color-warn-border: #c9a227;
+  --color-error: #b3261e;
+  --color-dry-run: #7a4fa3;
+  --radius: 6px;
+  --focus-ring: 0 0 0 3px rgba(31, 95, 139, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 20px 64px;
+}
+
+.app-header {
+  padding: 12px 0 8px;
+  border-bottom: 2px solid var(--color-border);
+  margin-bottom: 20px;
+}
+
+.app-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.app-subtitle {
+  margin: 4px 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Step frame ---------- */
+
+.step-frame {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.step-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.step-progress {
+  margin: 0 0 4px;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.step-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.badge-dry-run {
+  border-color: var(--color-dry-run);
+  color: var(--color-dry-run);
+  font-weight: 600;
+}
+
+.skip-banner {
+  border: 1px solid var(--color-warn-border);
+  background: var(--color-warn-bg);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+
+.step-body {
+  margin: 16px 0 24px;
+}
+
+.step-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--color-border);
+  padding-top: 16px;
+}
+
+/* ---------- Forms ---------- */
+
+.screen-form,
+.questionnaire,
+.comparison-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 12px;
+}
+
+.screen-intro {
+  color: var(--color-text-muted);
+  margin: 4px 0 8px;
+  max-width: 70ch;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 420px;
+}
+
+.field-inline {
+  max-width: 140px;
+}
+
+.field-label {
+  font-weight: 600;
+}
+
+.field-hint {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  min-height: 44px;
+}
+
+textarea {
+  min-height: 72px;
+  resize: vertical;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
+  box-shadow: var(--focus-ring);
+}
+
+.field-group {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin: 0;
+}
+
+.field-group legend {
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+.field-group-error {
+  border-color: var(--color-error);
+}
+
+.required-marker::after {
+  content: "（必答）";
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.radio-row,
+.check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 32px;
+  padding: 4px 0;
+}
+
+.radio-row input[type="radio"],
+.check-row input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.radio-row-inline {
+  display: inline-flex;
+  margin-right: 12px;
+}
+
+.radio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.radio-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 6px 4px;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.radio-cell input {
+  width: 18px;
+  height: 18px;
+}
+
+.radio-value {
+  font-weight: 600;
+}
+
+.radio-anchor {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.char-counter {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.field-error {
+  color: var(--color-error);
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin: 4px 0;
+}
+
+.source-note {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin: 2px 0 4px;
+}
+
+/* ---------- Buttons ---------- */
+
+.button {
+  font: inherit;
+  min-height: 44px;
+  padding: 8px 18px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.button-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.button-primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.button-secondary {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.button-danger {
+  background: var(--color-danger);
+  color: #fff;
+}
+
+.button-danger:hover:not(:disabled) {
+  background: var(--color-danger-hover);
+}
+
+.button-ghost {
+  background: transparent;
+  color: var(--color-primary);
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* ---------- Consent ---------- */
+
+.consent-scroll {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 8px 16px;
+  max-height: 240px;
+  overflow-y: auto;
+  background: var(--color-bg);
+  margin-bottom: 8px;
+}
+
+.consent-hint {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+/* ---------- Calibration ---------- */
+
+.calibration-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 18px;
+}
+
+.calibration-row {
+  display: grid;
+  grid-template-columns: 140px 120px 120px 1fr 110px;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+}
+
+.calibration-row .field-error {
+  grid-column: 1 / -1;
+}
+
+.finger-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.outcome-group {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.calibration-status {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Mock condition runner ---------- */
+
+.mock-status {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin: 8px 0;
+}
+
+.event-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.event-timeline {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Comparison ---------- */
+
+.comparison-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+
+.comparison-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+}
+
+.comparison-screenshot {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto 12px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.sample-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.sample-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  padding: 14px;
+  text-align: center;
+}
+
+.sample-play {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 0 8px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 1.05rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sample-play:hover:not(:disabled) {
+  border-color: var(--color-accent, #4f6ef7);
+}
+
+.sample-play:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.sample-play--active {
+  border-color: #b3261e;
+  color: #b3261e;
+}
+
+.playback-hint {
+  margin: 0 0 10px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+}
+
+.sample-title {
+  margin: 0;
+  font-weight: 600;
+}
+
+.sample-note {
+  margin: 2px 0 0;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Completion ---------- */
+
+.completion-status {
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-weight: 600;
+}
+
+.completion-status.ok {
+  border: 1px solid #2e7d32;
+  color: #1b5e20;
+  background: #eaf5ea;
+}
+
+.completion-status.warn {
+  border: 1px solid var(--color-warn-border);
+  color: #6d5710;
+  background: var(--color-warn-bg);
+}
+
+.download-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0;
+}
+
+.audit-summary {
+  font-size: 0.85rem;
+  max-height: 260px;
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 10px 10px 10px 30px;
+  margin: 8px 0 16px;
+}
+
+.audit-type {
+  font-weight: 600;
+}
+
+.audit-time {
+  color: var(--color-text-muted);
+  margin-left: 8px;
+}
+
+/* ---------- Session gate ---------- */
+
+.session-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.session-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+}
+
+/* ---------- Modal ---------- */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 35, 48, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 10;
+}
+
+.modal {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal h3 {
+  margin: 0 0 8px;
+}
+
+.modal-hint {
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* ---------- Misc ---------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- 步骤目录 ---------- */
+
+.modal-wide {
+  max-width: 560px;
+}
+
+/* 校准弹窗：8 区网格较宽，避免横向滚动 */
+.modal-calibration {
+  max-width: 720px;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.toc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--color-border);
+  padding: 4px 0;
+}
+
+.toc-link {
+  text-align: left;
+  min-height: 40px;
+  padding: 6px 8px;
+}
+
+.toc-link:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toc-status {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* ---------- PS5 virtual mouse ---------- */
+
+.gamepad-status {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 20;
+  margin: 0;
+  max-width: min(360px, calc(100vw - 32px));
+  padding: 8px 12px;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 4px 16px rgba(28, 35, 48, 0.16);
+  font-size: 0.82rem;
+}
+
+.gamepad-pointer {
+  position: fixed;
+  top: -11px;
+  left: -11px;
+  z-index: 30;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: rgba(31, 95, 139, 0.22);
+  box-shadow: 0 0 0 2px var(--color-primary), 0 2px 6px rgba(28, 35, 48, 0.35);
+}
+
+.gamepad-pointer::before,
+.gamepad-pointer::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--color-primary);
+  transform: translate(-50%, -50%);
+}
+
+.gamepad-pointer::before {
+  width: 2px;
+  height: 30px;
+}
+
+.gamepad-pointer::after {
+  width: 30px;
+  height: 2px;
+}
+
+@media (max-width: 720px) {
+  .calibration-row {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .sample-pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Embedded game iframes (practice + formal conditions) --- */
+.embedded-runner { display: flex; flex-direction: column; gap: 12px; }
+.embedded-frame-wrap {
+  position: relative;
+  width: 100%;
+  /* Matches the game scene ratio (120/68); the game fills the iframe exactly. */
+  aspect-ratio: 120 / 68;
+  border: 2px solid var(--border, #3c4066);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0b0e21;
+}
+.embedded-frame-wrap.frame-error { border-color: #c0392b; }
+.embedded-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.embedded-status { margin: 0; color: var(--text-muted, #a7b1d6); font-size: 14px; }
+
+/* ---------- Wide game-step layout (instruction / condition-1 / condition-2) ----------
+   Only the three game steps widen the shell; questionnaire and reading steps
+   keep the default 960px width. */
+.app.app--game-step {
+  max-width: 1360px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.step-frame--game {
+  padding: 16px 12px;
+}
+
+.step-frame--game .step-body {
+  margin: 12px 0 16px;
+}
+
+.embedded-frame-wrap--game {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+}
+
+/* ---------- 持久 HardwareHost（会话内唯一串口持有者，可折叠操作员面板） ---------- */
+.hardware-host-dock {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+.hardware-host-toggle {
+  min-height: 36px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+.hardware-host-frame {
+  width: 420px;
+  height: 520px;
+  max-width: calc(100vw - 32px);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background: #11142b;
+}

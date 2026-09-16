@@ -1,0 +1,23 @@
+column,factor,factor_name,item,direction,question_id,item_text,item_text_en,scoring
+HXI_AU1,AU,自目的愉悦性 Autotelics,1,positive,hxi_a1,不考虑其功能，我觉得这些触觉感受是令人愉悦的。,"Regardless of function, I found the haptic sensations pleasant.",1–7 原始分
+HXI_AU2,AU,自目的愉悦性 Autotelics,2,positive,hxi_a2,对我来说，体验这些触觉感受是一种享受。,Experiencing the haptic sensations was enjoyable to me.,1–7 原始分
+HXI_AU3,AU,自目的愉悦性 Autotelics,3,positive,hxi_a3,我很享受这些触觉感受本身。,I enjoyed the haptic sensations themselves.,1–7 原始分
+HXI_AU4,AU,自目的愉悦性 Autotelics,4,positive,hxi_a4,无论其功能如何，这些触觉感受本身就是一种享受。,"The haptic sensations were enjoyable on their own, regardless of their function.",1–7 原始分
+HXI_IN1,IN,投入感 Involvement,1,positive,hxi_i1,这些触觉感受让我更加沉浸于当前任务中。,I felt absorbed in the task due to the haptic sensations.,1–7 原始分
+HXI_IN2,IN,投入感 Involvement,2,positive,hxi_i2,我觉得这些触觉感受增强了我与该系统交互时的投入程度。,I found the haptic sensations strengthened my engagement with the system.,1–7 原始分
+HXI_IN3,IN,投入感 Involvement,3,positive,hxi_i3,这些触觉感受促进了我对当前任务的投入。,The haptic sensations contributed to my involvement in the task.,1–7 原始分
+HXI_IN4,IN,投入感 Involvement,4,positive,hxi_i4,这些触觉交互让我更加专注。,The haptic interactions made me more focused.,1–7 原始分
+HXI_RE1,RE,真实感 Realism,1,positive,hxi_r1,这些触觉感受与我在现实生活中实际感受到的触觉相似。,The haptic sensations resembled the ones I feel in real life.,1–7 原始分
+HXI_RE2,RE,真实感 Realism,2,positive,hxi_r2,这些触觉感受非常接近我预期在现实中会体验到的感觉。,The haptic sensations closely mimicked the experiences I would expect in reality.,1–7 原始分
+HXI_RE3,RE,真实感 Realism,3,positive,hxi_r3,这些触觉感受让我觉得像现实生活中熟悉的触感。,The haptic sensations felt familiar to real life touch.,1–7 原始分
+HXI_RE4,RE,真实感 Realism,4,positive,hxi_r4,这些触觉感受逼真地再现了现实世界中的感觉。,The haptic sensations provided a true-to-life representation of real-world sensations.,1–7 原始分
+HXI_DI1,DI,失调感 Discord,1,negative,hxi_d1,这些触觉感受似乎与其他感官之间缺乏协调。,The haptic sensations seemed to lack coordination with other senses.,1–7 原始分（负向维度；分析阶段如需因子分请用 8−x 反向计分，导出不做转换）
+HXI_DI2,DI,失调感 Discord,2,negative,hxi_d2,我感到这些触觉感受与其他感官之间存在不匹配。,I experienced a sense of mismatch between the haptic sensations and other senses.,1–7 原始分（负向维度；分析阶段如需因子分请用 8−x 反向计分，导出不做转换）
+HXI_DI3,DI,失调感 Discord,3,negative,hxi_d3,我感觉这些触觉感受与其他感官不同步。,The haptic sensations felt out of sync with the other senses.,1–7 原始分（负向维度；分析阶段如需因子分请用 8−x 反向计分，导出不做转换）
+HXI_DI4,DI,失调感 Discord,4,negative,hxi_d4,我感到这些触觉感受与我的预期之间存在脱节。,I experienced a disconnect between the haptic sensations and what I expected.,1–7 原始分（负向维度；分析阶段如需因子分请用 8−x 反向计分，导出不做转换）
+HXI_HA1,HA,协调性 Harmony,1,positive,hxi_h1,我感到这些触觉感受与其他感官之间是和谐一致的。,I felt a sense of harmony between the haptic sensations and other senses.,1–7 原始分
+HXI_HA2,HA,协调性 Harmony,2,positive,hxi_h2,这些触觉感受能够与其他感官体验无缝融合。,The haptic sensations integrated seamlessly with other senses.,1–7 原始分
+HXI_HA3,HA,协调性 Harmony,3,positive,hxi_h3,我觉得这些触觉感受与其他感官之间协调良好。,I feel the haptic sensations are well coordinated with the other senses.,1–7 原始分
+HXI_HA4,HA,协调性 Harmony,4,positive,hxi_h4,这些触觉感受能够很好地补充其他感官体验。,The haptic sensations complemented other senses well.,1–7 原始分
+comfort_electro,,电刺激感受（研究团队自拟）,1,,comfort_electro,总体而言，刚才游戏中的电触觉刺激有多舒适？,,1–7 原始分
+pain_electro,,电刺激感受（研究团队自拟）,2,,pain_electro,刚才游戏中的电触觉刺激引起了多强的疼痛？,,1–7 原始分

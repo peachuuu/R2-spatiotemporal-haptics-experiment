@@ -1,0 +1,7 @@
+column,factor,factor_name,item,direction,question_id,item_text,item_text_en,scoring
+PXI_IM1,IM,沉浸感 Immersion,1,positive,pxi_im1,在游戏过程中，我几乎没有再注意到周围的环境。,I was no longer aware of my surroundings while I was playing.,-3–3 原始分
+PXI_IM2,IM,沉浸感 Immersion,2,positive,pxi_im2,我沉浸在游戏中。,I was immersed in the game.,-3–3 原始分
+PXI_IM3,IM,沉浸感 Immersion,3,positive,pxi_im3,我完全专注于游戏。,I was fully focused on the game.,-3–3 原始分
+PXI_MA1,MA,掌控感 Mastery,1,positive,pxi_ma1,我觉得自己很擅长玩这个游戏。,I felt I was good at playing this game.,-3–3 原始分
+PXI_MA2,MA,掌控感 Mastery,2,positive,pxi_ma2,在游戏过程中，我觉得自己很有能力完成游戏任务。,I felt capable while playing the game.,-3–3 原始分
+PXI_MA3,MA,掌控感 Mastery,3,positive,pxi_ma3,在玩这个游戏时，我感到自己能够很好地掌握它。,I felt a sense of mastery playing this game.,-3–3 原始分

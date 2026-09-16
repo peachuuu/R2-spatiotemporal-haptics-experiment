@@ -1,0 +1,24 @@
+import assert from "node:assert/strict";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+import fs from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
+import JSZip from "jszip";
+
+const exec = promisify(execFile);
+const folder = await fs.mkdtemp(path.join(os.tmpdir(), "r2-derived-"));
+const zipPath = path.join(folder, "PTEST_20260830-1200.zip");
+const zip = new JSZip();
+zip.file("raw/PTEST_20260830-1200_session.json", JSON.stringify({ id: "s1", participantCode: "PTEST", conditionRuns: { baseline: { displayCondition: "A", attempts: [{ runId: "r1", attemptId: "a1", status: "won", startedAt: "x", objectiveTrials: [{ trialUid: "r1:G07-P01", trialType: "projectile", trialIndex: 1, timelineEventId: "G07-P01", stage: "A", visualAvailability: "limited", startedAtMs: 1, endedAtMs: 2, trialValid: true, invalidReason: null, success: 1, parameters: {}, metrics: { firstJumpRtMs: 1 } }] }], gameEvents: [] } }, conditionResponses: { baseline: { hxi_a1: 6, pxi_im1: 2 } } }));
+for (const name of ["raw/PTEST_20260830-1200_game-events.csv", "raw/PTEST_20260830-1200_haptic-cues.csv", "raw/PTEST_20260830-1200_audit-log.csv", "analysis/PTEST_20260830-1200_subjective.csv", "qc/PTEST_20260830-1200_data-quality.csv"]) zip.file(name, "header\n");
+await fs.writeFile(zipPath, await zip.generateAsync({ type: "nodebuffer" }));
+await exec(process.execPath, ["scripts/generate-derived-data.mjs", zipPath], { cwd: path.resolve(".") });
+const output = await fs.readFile(path.resolve("derived/PTEST_20260830-1200_objective-trials.csv"), "utf8");
+assert.match(output, /r1:G07-P01/);
+assert.match(output, /schema_version,reference_version/);
+assert.match(output, /objective-trials\.v1,r2-data-references\.v1/);
+assert.match(await fs.readFile(path.resolve("derived/PTEST_20260830-1200_hxi.csv"), "utf8"), /hxi_a1/);
+assert.match(await fs.readFile(path.resolve("derived/PTEST_20260830-1200_pxi.csv"), "utf8"), /pxi_im1/);
+for (const suffix of ["objective-trials", "hxi", "pxi", "game-summary"]) await fs.rm(path.resolve(`derived/PTEST_20260830-1200_${suffix}.csv`), { force: true });
+await fs.rm(folder, { recursive: true, force: true });

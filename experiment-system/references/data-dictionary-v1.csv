@@ -1,0 +1,7 @@
+table,column,meaning,missing_value
+objective-trials,trial_valid,1=有效完成；0=技术中断或操作员跳过,NA不适用
+objective-trials,success,有效试次 1=成功 0=失败；无效试次为空,空=无效试次
+objective-trials,firstJumpRtMs,攻击开始至第一次跳跃输入的毫秒数,空=未跳跃或不适用
+objective-trials,areaExitMs,危险区开始至首次离开最终受击边界的毫秒数,空=未从区内离开或不适用
+objective-trials,dwellTimeMs,危险区开始至结束期间处于最终受击边界内的累计毫秒数,空=不适用
+objective-trials,completionTimeMs,宝箱 cue 开始至找到宝箱的毫秒数,空=未完成或不适用

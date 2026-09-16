@@ -1,0 +1,41 @@
+# Dependencies and build output
+node_modules/
+dist/
+.next/
+.vinext/
+out/
+coverage/
+.wrangler/
+.vercel/
+outputs/
+work/
+*.tsbuildinfo
+__pycache__/
+*.pyc
+
+# Test/runtime output
+logs/
+test-results/
+playwright-report/
+derived/
+.worktrees/
+*.log
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+
+# Participant/session exports (keep only explicitly documented synthetic fixtures)
+exports/
+participant-data/
+sessions/
+*_session.json
+*_experiment-data.zip
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
